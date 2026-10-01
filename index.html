@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Quản lý quán bida, đồ ăn và đồ uống">
+  <title>Billiards Management</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>
+  <h1>🎱 Billiards Management</h1>
+  <div id="auth">Chưa đăng nhập</div>
+</header>
+<main>
+  <section class="card">
+    <h2>Đăng nhập</h2>
+    <form id="loginForm">
+      <input id="username" placeholder="Username" autocomplete="username" required>
+      <input id="password" type="password" placeholder="Password" autocomplete="current-password" required>
+      <button type="submit">Đăng nhập</button>
+      <button type="button" onclick="logout()">Đăng xuất</button>
+    </form>
+    <p id="loginMessage"></p>
+  </section>
+
+  <section class="card">
+    <div class="row"><h2>Sản phẩm</h2><button type="button" onclick="loadProducts()">Tải lại</button></div>
+    <div id="products" class="grid"></div>
+  </section>
+
+  <section class="card" id="adminProductCard">
+    <h2>Thêm sản phẩm</h2>
+    <form id="productForm">
+      <input id="pname" placeholder="Tên sản phẩm" required maxlength="150">
+      <input id="pdesc" placeholder="Mô tả" maxlength="500">
+      <select id="pcategory"><option value="">Không chọn danh mục</option></select>
+      <input id="pprice" type="number" min="0" step="1000" placeholder="Giá bán" required>
+      <input id="pstock" type="number" min="0" placeholder="Tồn kho" value="0">
+      <button type="submit">Thêm sản phẩm</button>
+    </form>
+  </section>
+
+  <section class="card" id="uploadCard">
+    <h2>Thêm hình ảnh từ tệp</h2>
+    <p>Chọn sản phẩm, sau đó chọn file ảnh tối đa 5MB.</p>
+    <select id="imageProduct"></select>
+    <input id="imageFile" type="file" accept="image/png,image/jpeg,image/webp,image/gif">
+    <button type="button" onclick="uploadImage()">Upload hình ảnh</button>
+    <p id="uploadMessage"></p>
+  </section>
+</main>
+<script src="js/config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
